@@ -25,8 +25,8 @@ class HomePage extends StatelessWidget {
               ],
             ),
             body: SafeArea(
-              child: HomeList(),
-              // child: ProductList(),
+              // child: HomeList(),
+              child: ProductList(),
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
