@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_validations/controllers/global_controller.dart';
+import 'package:flutter_getx_validations/pages/reactive_page.dart';
 import 'package:flutter_getx_validations/pages/splash_%C3%A1ge.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashPage(),
+      home: ReactivePage(),
     );
   }
 }
