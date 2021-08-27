@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_validations/controllers/reactive_controller.dart';
 import 'package:flutter_getx_validations/controllers/socket_client_controller.dart';
@@ -18,6 +19,11 @@ class ReactivePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                CupertinoTextField(
+                  onChanged: (text) {
+                    socketController.setSearchText(text);
+                  },
+                ),
                 // Obx(() => Text("age ${_.myPet.age}")),
                 Obx(() => Text(socketController.message.value)),
                 ElevatedButton(
