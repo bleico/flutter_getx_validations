@@ -11,22 +11,17 @@ class ReactivePage extends StatelessWidget {
         init: ReactivaController(),
         builder: (_) {
           return Scaffold(
-              body: Obx(
-                () => ListView.builder(
-                    itemCount: _.items.length,
-                    itemBuilder: (__, index) {
-                      final String text = _.items[index];
-                      return ListTile(
-                        title: Text(text),
-                        trailing: IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () {
-                            _.removeItem(index);
-                          },
-                        ),
-                      );
-                    }),
-              ),
+              body: Obx(() => ListView(
+                    children: _.mapItems.values
+                        .map((e) => ListTile(
+                              title: Text(e),
+                              trailing: IconButton(
+                                icon: Icon(Icons.delete),
+                                onPressed: () => _.removeMapItem(e),
+                              ),
+                            ))
+                        .toList(),
+                  )),
               floatingActionButton: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -34,7 +29,7 @@ class ReactivePage extends StatelessWidget {
                     heroTag: 'add',
                     child: Icon(Icons.add),
                     onPressed: () {
-                      _.addItem();
+                      _.mapItem();
                     },
                   ),
                   FloatingActionButton(
