@@ -1,3 +1,4 @@
+import 'package:flutter_getx_validations/models/pet.dart';
 import 'package:get/get.dart';
 
 class ReactivaController extends GetxController {
@@ -5,6 +6,8 @@ class ReactivaController extends GetxController {
   RxString currentDate = ''.obs;
   RxList<String> items = [''].obs;
   RxMap<String, dynamic> mapItems = Map<String, dynamic>().obs;
+
+  Rx<Pet> myPet = Pet(name: "Bumer", age: 1).obs;
 
   void increment() {
     counter.value++;
@@ -29,5 +32,9 @@ class ReactivaController extends GetxController {
 
   void removeMapItem(String key) {
     mapItems.remove(key);
+  }
+
+  void setPetAge(int age) {
+    myPet.value = myPet.value.copyWith(age: age);
   }
 }

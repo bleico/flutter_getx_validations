@@ -11,36 +11,51 @@ class ReactivePage extends StatelessWidget {
         init: ReactivaController(),
         builder: (_) {
           return Scaffold(
-              body: Obx(() => ListView(
-                    children: _.mapItems.values
-                        .map((e) => ListTile(
-                              title: Text(e),
-                              trailing: IconButton(
-                                icon: Icon(Icons.delete),
-                                onPressed: () => _.removeMapItem(e),
-                              ),
-                            ))
-                        .toList(),
-                  )),
-              floatingActionButton: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  FloatingActionButton(
-                    heroTag: 'add',
-                    child: Icon(Icons.add),
-                    onPressed: () {
-                      _.mapItem();
-                    },
-                  ),
-                  FloatingActionButton(
-                    heroTag: 'date',
-                    child: Icon(Icons.calendar_today),
-                    onPressed: () {
-                      _.getDate();
-                    },
-                  ),
-                ],
-              ));
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Obx(() => Text("age ${_.myPet.value.age}")),
+                ElevatedButton(
+                  onPressed: () {
+                    _.setPetAge(_.myPet.value.age + 1);
+                  },
+                  child: Text('set Age'),
+                ),
+              ],
+            ),
+            /* body: Obx(
+                () => ListView(
+                  children: _.mapItems.values
+                      .map((e) => ListTile(
+                            title: Text(e),
+                            trailing: IconButton(
+                              icon: Icon(Icons.delete),
+                              onPressed: () => _.removeMapItem(e),
+                            ),
+                          ))
+                      .toList(),
+                ),
+              ), */
+            /* floatingActionButton: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                FloatingActionButton(
+                  heroTag: 'add',
+                  child: Icon(Icons.add),
+                  onPressed: () {
+                    _.mapItem();
+                  },
+                ),
+                FloatingActionButton(
+                  heroTag: 'date',
+                  child: Icon(Icons.calendar_today),
+                  onPressed: () {
+                    _.getDate();
+                  },
+                ),
+              ],
+            ), */
+          );
         });
   }
 }
