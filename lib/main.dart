@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_validations/controllers/global_controller.dart';
+import 'package:flutter_getx_validations/controllers/socket_client_controller.dart';
 import 'package:flutter_getx_validations/pages/reactive_page.dart';
 import 'package:flutter_getx_validations/pages/splash_%C3%A1ge.dart';
 import 'package:get/route_manager.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(GlobalController());
+    Get.put(SocketClientController());
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,

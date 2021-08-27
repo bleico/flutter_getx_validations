@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter_getx_validations/controllers/socket_client_controller.dart';
 import 'package:flutter_getx_validations/models/pet.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +11,25 @@ class ReactivaController extends GetxController {
   RxMap<String, dynamic> mapItems = Map<String, dynamic>().obs;
 
   Pet myPet = Pet(name: "Bumer", age: 1);
+
+  StreamSubscription<String>? _subscription;
+
+  @override
+  void onInit() {
+    super.onInit();
+    final SocketClientController socketClientController =
+        Get.find<SocketClientController>();
+
+    _subscription = socketClientController.message.listen((String data) {
+      print('Message::::: $data');
+    });
+  }
+
+  @override
+  void onClose() {
+    _subscription?.cancel();
+    super.onClose();
+  }
 
   void increment() {
     counter.value++;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_validations/controllers/reactive_controller.dart';
+import 'package:flutter_getx_validations/controllers/socket_client_controller.dart';
 import 'package:get/get.dart';
 
 class ReactivePage extends StatelessWidget {
@@ -7,14 +8,18 @@ class ReactivePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SocketClientController socketController =
+        Get.find<SocketClientController>();
     return GetBuilder<ReactivaController>(
         init: ReactivaController(),
         builder: (_) {
           return Scaffold(
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Obx(() => Text("age ${_.myPet.age}")),
+                // Obx(() => Text("age ${_.myPet.age}")),
+                Obx(() => Text(socketController.message.value)),
                 ElevatedButton(
                   onPressed: () {
                     _.setPetAge(_.myPet.age + 1);
