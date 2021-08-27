@@ -1,13 +1,40 @@
-class Pet {
-  String name;
-  int age;
+import 'package:get/get.dart';
 
-  Pet({
+class RxPet {
+  final RxString name;
+  final RxInt age;
+
+  RxPet({
     required this.name,
     required this.age,
   });
+}
 
-  Pet copyWith({
+class Pet {
+  late RxPet rx;
+
+  Pet({
+    required String name,
+    required int age,
+  }) {
+    this.rx = RxPet(
+      name: name.obs,
+      age: age.obs,
+    );
+  }
+
+  String get name => this.rx.name.value;
+  int get age => this.rx.age.value;
+
+  set name(String value) {
+    this.rx.name.value = value;
+  }
+
+  set age(int value) {
+    this.rx.age.value = value;
+  }
+
+/*   Pet copyWith({
     String? name,
     int? age,
   }) {
@@ -15,5 +42,5 @@ class Pet {
       name: name ?? this.name,
       age: age ?? this.age,
     );
-  }
+  } */
 }

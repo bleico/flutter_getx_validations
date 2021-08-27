@@ -14,10 +14,10 @@ class ReactivePage extends StatelessWidget {
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Obx(() => Text("age ${_.myPet.value.age}")),
+                Obx(() => Text("age ${_.myPet.age}")),
                 ElevatedButton(
                   onPressed: () {
-                    _.setPetAge(_.myPet.value.age + 1);
+                    _.setPetAge(_.myPet.age + 1);
                   },
                   child: Text('set Age'),
                 ),
